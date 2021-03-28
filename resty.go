@@ -21,6 +21,7 @@ type Clusterdata struct {
 	Data []Clusterinfo `json:"data"`
 }
 
+//test
 func (c *Login) getresty() {
 	client := resty.New()
 	var myclusterdata Clusterdata
