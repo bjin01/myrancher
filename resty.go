@@ -22,7 +22,7 @@ type Clusterdata struct {
 }
 
 //test
-func (c *Login) getresty() {
+func (c *Login) getresty() Clusterdata {
 	client := resty.New()
 	var myclusterdata Clusterdata
 	resp, err := client.R().
@@ -39,6 +39,8 @@ func (c *Login) getresty() {
 			fmt.Printf("\tState: %v\n\tMessage: %v\n", b.Cstate, b.CtransitionMessage)
 			fmt.Println("---")
 		}
+		return myclusterdata
 	}
+	return myclusterdata
 
 }
