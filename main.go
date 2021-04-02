@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type Login struct {
@@ -24,8 +25,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	mycluster := mylogin.getresty()
 	var finaloutput string
 	if len(mycluster.Data) != 0 {
+		dt := time.Now()
 
-		finaloutput = "<h1>Rancher Managed Cluster Information!</h1><h2 style=color:green;>peer review app</h2>"
+		finaloutput = "<h1>Rancher Managed Cluster Information!</h1><h2 style=color:green;>peer review app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3>"
 
 		for _, b := range mycluster.Data {
 
