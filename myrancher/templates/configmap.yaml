@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+{{- if .Values.configmap }}
+    # User-supplied configuration:
+    RANCHER_TOKEN: {{ quote .Values.configmap.RANCHER_TOKEN }}
+    RANCHER_SERVER: {{ quote .Values.configmap.RANCHER_SERVER }}
+    RANCHER_CLUSTER_ID: {{ quote .Values.configmap.RANCHER_CLUSTER_ID }}
+{{- end }}
