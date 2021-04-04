@@ -1,6 +1,9 @@
 package main
 
 import (
+	"bytes"
+	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"strconv"
@@ -15,6 +18,16 @@ type Login struct {
 	projectID  string
 }
 
+func checkenv() {
+	var buf bytes.Buffer
+	ErrorLogger := log.New(&buf, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
+	if os.Getenv("RANCHER_SERVER") == "" || os.Getenv("RANCHER_TOKEN") == "" {
+
+		ErrorLogger.Print("Environment Variable RANCHER_SERVER and or RANCHER_TOKEN not set.")
+		fmt.Print(&buf)
+		os.Exit(1)
+	}
+}
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	mylogin := Login{
 		rancherURL: os.Getenv("RANCHER_SERVER"),
@@ -52,7 +65,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
+	checkenv()
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", indexHandler)
