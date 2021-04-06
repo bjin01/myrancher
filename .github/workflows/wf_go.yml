@@ -43,5 +43,6 @@ jobs:
       with:
         context: .
         push: true
+        tags: jinbo01/myrancher:latest 
   
         
