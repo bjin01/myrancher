@@ -22,9 +22,15 @@ jobs:
     - name: Test
       run: go test -v ./...
 
+    - name: store compiled binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: myrancher
+        path: bin
+
     - name: Download binary
       uses: actions/download-artifact@v2
       with:
         name: myrancher
-        path: bin
+        
 
