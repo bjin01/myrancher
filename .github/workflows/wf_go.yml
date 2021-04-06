@@ -32,11 +32,11 @@ jobs:
     # Deploy to Docker registry
     - name: Deploy to Docker registry
       if: ${{ success() }}
-      uses: docker/build-push-action@v1
+      uses: docker/build-push-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: jinbo01/myrancher
-        tag_with_ref: true
+        tag_with_ref: false
         
 
