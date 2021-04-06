@@ -8,10 +8,14 @@ Deploy this app via helm chart to kubernetes cluster:
 ```# helm repo add myrancher-repo https://mygit.bocap.cloud/myrancher/```
 
 * install app via helm v3:
-```# helm install myapp myrancher-repo/myrancher -f values.yaml```
+```
+# helm install myapp myrancher-repo/myrancher -f values.yaml
+```
 __notes__: adapt the parameters in values.yaml prior install app. If you don't specify the RANCHER_* env variables the pod will not start successfully.
 To get the values.yaml you can run:
-```# helm show values myrancher-repo/myrancher > values.yaml```
+```
+# helm show values myrancher-repo/myrancher > values.yaml
+```
 
 
 ### Before running the binary one needs to export those environment variables in order to provide cluster authentication data.
