@@ -43,5 +43,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: bjin01/myrancher:latest
+  
         
