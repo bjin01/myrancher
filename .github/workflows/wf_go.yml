@@ -26,11 +26,14 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: myrancher
-        path: bin
 
-    - name: Download binary
-      uses: actions/download-artifact@v2
+    # Deploy to Docker registry
+    - name: Deploy to Docker registry
+      uses: docker/build-push-action@v1
       with:
-        name: myrancher
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: jinbo01/myrancher
+        tag_with_ref: true
         
 
