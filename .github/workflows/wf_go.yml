@@ -20,15 +20,18 @@ jobs:
       run: go build -v ./...
 
     - name: Test
+      if: ${{ success() }}
       run: go test -v ./...
 
     - name: store compiled binary
       uses: actions/upload-artifact@v2
       with:
         name: myrancher
+        path: ./
 
     # Deploy to Docker registry
     - name: Deploy to Docker registry
+      if: ${{ success() }}
       uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
