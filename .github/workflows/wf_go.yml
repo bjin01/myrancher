@@ -37,6 +37,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: jinbo01/myrancher
-        tag_with_ref: false
+        tag_with_ref: latest
         
 
