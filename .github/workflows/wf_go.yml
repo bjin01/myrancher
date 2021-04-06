@@ -24,3 +24,6 @@ jobs:
 
     - name: store compiled binary
       uses: actions/upload-artifact@v2
+      with:
+        name: store-bin-path
+        path: ./
