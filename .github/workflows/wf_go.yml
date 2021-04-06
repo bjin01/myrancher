@@ -30,13 +30,19 @@ jobs:
         path: ./
 
     # Deploy to Docker registry
+    - name: Login to DockerHub
+      if: ${{ success() }}
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
     - name: Deploy to Docker registry
       if: ${{ success() }}
       uses: docker/build-push-action@v2
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: jinbo01/myrancher
+        context: .
+        push: true
         tags: bjin01/myrancher:latest
         
 
