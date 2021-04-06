@@ -44,6 +44,11 @@ jobs:
         context: .
         push: true
         tags: jinbo01/myrancher:latest 
+
+    - name: Checkout with fetch depth 0
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  
   
     - name: Configure Git
       run: |
