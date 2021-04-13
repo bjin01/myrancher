@@ -53,10 +53,10 @@ ingress:
   hosts:
     - host: peerreview.bocap.cloud
       paths: ["/"]
-  tls: 
-    - hosts: 
-      - "peerreview.bocap.cloud"
-      secretName: "secret"
+  tls:
+    secretName: "secret"
+    hosts:
+      - peerreview.bocap.cloud
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
