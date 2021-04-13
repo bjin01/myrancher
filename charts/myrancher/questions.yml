@@ -19,7 +19,7 @@ questions:
   type: boolean
   label: Ingres Yes or No.
   group: "Ingress"
-- variable: ingress.hosts
+- variable: ingress.hosts.host
   default: "myapp.example.com"
   description: "Enter desired hosname as FQDN"
   type: hostname
@@ -31,7 +31,7 @@ questions:
   type: string
   label: tls secret name.
   group: "Ingress"
-- variable: ingress.tls
+- variable: ingress.tls.host
   default: ""
   description: "Enter the hostname in fqdn that your tls cert covers"
   type: hostname
