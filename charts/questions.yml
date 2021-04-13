@@ -1,0 +1,15 @@
+questions:
+- variable: configmap.RANCHER_TOKEN
+  default: ""
+  required: true
+  description: "Enter your TOken"
+  label: Rancher Token
+  type: string
+  group: "Rancher Credentials"
+- variable: configmap.RANCHER_SERVER
+  default: "https://borancher.bocap.cloud"
+  required: true
+  description: "Enter the rancher dashboard fqdn with https endpoint."
+  type: string
+  label: Rancher Endpoint - FQDN
+  group: "Rancher Credentials"
