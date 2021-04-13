@@ -19,7 +19,7 @@ questions:
   type: boolean
   label: Ingres Yes or No.
   group: "Ingress"
-- variable: ingress.hosts.host
+- variable: ingress.host
   default: "peerreview.bocap.cloud"
   description: "Enter desired hosname as FQDN"
   type: string
