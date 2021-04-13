@@ -13,21 +13,3 @@ questions:
   type: string
   label: Rancher Endpoint - FQDN
   group: "Rancher Credentials"
-- variable: ingress.enabled
-  default: true
-  description: "Use Ingress or not?."
-  type: boolean
-  label: Ingres Yes or No.
-  group: "Ingress"
-- variable: ingress.tls.secretName
-  default: "secret"
-  description: "Enter the secret name that holds your tls certificates"
-  type: string
-  label: tls secret name.
-  group: "Ingress"
-- variable: ingress.tls.host
-  default: "peerreview.bocap.cloud"
-  description: "Enter the hostname in fqdn that your tls cert covers"
-  type: string
-  label: tls hostname.
-  group: "Ingress"
