@@ -51,12 +51,12 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: myrancher.local
+    - host: peerreview.bocap.cloud
       paths: ["/"]
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+    - secretName: secret
+      hosts:
+        - peerreview.bocap.cloud
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
