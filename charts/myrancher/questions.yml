@@ -31,7 +31,7 @@ questions:
   type: string
   label: tls secret name.
   group: "Ingress"
-- variable: ingress.tls.host
+- variable: ingress.tls.hosts
   default: "peerreview.bocap.cloud"
   description: "Enter the hostname in fqdn that your tls cert covers"
   type: string
