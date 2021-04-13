@@ -53,7 +53,7 @@ ingress:
   hosts:
     - host: peerreview.bocap.cloud
       paths: ["/"]
-  tls: []
+  tls: 
     - secretName: secret
       hosts:
         - peerreview.bocap.cloud
