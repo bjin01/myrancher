@@ -20,20 +20,20 @@ questions:
   label: Ingres Yes or No.
   group: "Ingress"
 - variable: ingress.hosts.host
-  default: "myapp.example.com"
+  default: "peerreview.bocap.cloud"
   description: "Enter desired hosname as FQDN"
-  type: hostname
+  type: string
   label: Hostname to be used for your app.
   group: "Ingress"
 - variable: ingress.tls.secretName
-  default: ""
+  default: "secret"
   description: "Enter the secret name that holds your tls certificates"
   type: string
   label: tls secret name.
   group: "Ingress"
 - variable: ingress.tls.host
-  default: ""
+  default: "peerreview.bocap.cloud"
   description: "Enter the hostname in fqdn that your tls cert covers"
-  type: hostname
+  type: string
   label: tls hostname.
   group: "Ingress"
