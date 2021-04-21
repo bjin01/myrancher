@@ -39,8 +39,15 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	var finaloutput string
 	if len(mycluster.Data) != 0 {
 		dt := time.Now()
+		myhead := `<head>
+		<style>
+		body {
+		  background-color: coral;
+		}
+		</style>
+		</head>`
 
-		finaloutput = "<h1>Rancher Managed Cluster Information!</h1><h2 style=color:green;>peer review app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3>"
+		finaloutput = myhead + "<h1>Rancher Managed Cluster Information!</h1><h2 style=color:green;>peer review app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3>"
 
 		for _, b := range mycluster.Data {
 
@@ -60,6 +67,8 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//finaloutput += finaloutput
 	}
+
+	w.Header().Set("bo", "jin")
 	w.Write([]byte(finaloutput))
 
 }
