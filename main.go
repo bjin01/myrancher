@@ -47,7 +47,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		</style>
 		</head>`
 
-		finaloutput = myhead + "<h1>Rancher Managed Cluster Information!</h1><h2 style=color:green;>peer review app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3>"
+		finaloutput = myhead + "<body><h1>Rancher Cluster Information!</h1><h2 style=color:green;>peer review app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3>"
 
 		for _, b := range mycluster.Data {
 
@@ -63,7 +63,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 				p5 = "<p style=color:green;>Status: " + "<b>" + b.Cstate + "&#128077;</b></p>"
 			}
 			p6 := "<p>--------------------</p>"
-			finaloutput += p1 + p2 + p3 + p4 + p5 + p6
+			finaloutput += p1 + p2 + p3 + p4 + p5 + p6 + "</body>"
 		}
 		//finaloutput += finaloutput
 	}
