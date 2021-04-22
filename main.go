@@ -37,22 +37,38 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	mycluster := mylogin.getresty()
 	var finaloutput string
-	if len(mycluster.Data) != 0 {
-		dt := time.Now()
-		myhead := `<head>
-		<style>
-		body {
-		  background-color: coral;
+	dt := time.Now()
+	myhead := `<head>
+	<style>
+	* {
+		background-color: green;
+	}
+	
+	div.a {
+		text-align: center;
+	}
+	h2 {
+		color: blue;
+	  }
+	.row {
+		display: flex;
 		}
-		</style>
-		</head>`
+		
+		/* Create two equal columns that sits next to each other */
+		.column {
+		flex: 50%;
+		padding: 10px;
+		height: 300px; /* Should be removed. Only for demonstration */
+		}
+	</style>
+	</head>`
 
-		finaloutput = myhead + "<body><h1>Rancher Cluster Information!</h1><h2 style=color:green;>peer review app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3>"
+	finaloutput = myhead + "<body><div class=\"a\"><h1>Rancher Cluster Information!</h1><h2 style=color:white;>ALPS review app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3></div><div class=\"row\">"
 
+	if len(mycluster.Data) != 0 {
 		for _, b := range mycluster.Data {
-
-			p1 := "<p>ClusterID: " + b.Cid + "</p>"
-			p2 := "<p>ClusterName: " + b.Cname + "</p>"
+			p1 := "<div class=\"column\"><h2>ClusterName: " + b.Cname + "</h2>"
+			p2 := "<p>ClusterID: " + b.Cid + "</p>"
 			p3 := "<p>Provider: " + b.Cprovider + "</p>"
 			p4 := "<p>Number of nodes: " + strconv.Itoa(b.Cnodes) + "</p>"
 			p5 := "<p>Status: " + b.Cstate + "</p>"
@@ -60,14 +76,13 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 				p5 = "<p style=color:red;>Status: " + "<b>" + b.Cstate + "&#128078;</b></p>"
 			}
 			if strings.Contains(b.Cstate, "active") {
-				p5 = "<p style=color:green;>Status: " + "<b>" + b.Cstate + "&#128077;</b></p>"
+				p5 = "<p style=color:white;>Status: " + "<b>" + b.Cstate + "&#128077;</b></p>"
 			}
-			p6 := "<p>--------------------</p>"
-			finaloutput += p1 + p2 + p3 + p4 + p5 + p6 + "</body>"
+			//p6 := "<p>--------------------</p></div>"
+			finaloutput += p1 + p2 + p3 + p4 + p5 + "</div>"
 		}
-		//finaloutput += finaloutput
 	}
-
+	finaloutput = finaloutput + "</div></body>"
 	w.Header().Set("bo", "jin")
 	w.Write([]byte(finaloutput))
 
