@@ -73,5 +73,5 @@ jobs:
         args: |
           helm repo add borancher https://mygit.bocap.cloud/myrancher
           helm repo update
-          helm upgrade --install --wait boapi myrancher-repo/myrancher
+          helm upgrade --install --wait boapi borancher/myrancher
         
