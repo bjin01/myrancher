@@ -63,4 +63,15 @@ jobs:
       uses: helm/chart-releaser-action@v1.2.0
       env:
         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: deploy postgres to cluster
+      if: ${{ success() }}
+      uses: wahyd4/kubectl-helm-action@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      with:
+        args: |
+          helm repo add borancher https://mygit.bocap.cloud/myrancher
+          helm repo update
+          helm upgrade --install --wait boapi myrancher-repo/myrancher
         
