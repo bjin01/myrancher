@@ -68,7 +68,7 @@ jobs:
       if: ${{ success() }}
       uses: juliangruber/sleep-action@v1
       with:
-        time: 10s 
+        time: 120s 
 
     - name: deploy borancher to cluster
       uses: wahyd4/kubectl-helm-action@master
@@ -80,4 +80,5 @@ jobs:
           helm repo update
           helm upgrade --install --wait boapi borancher/myrancher
           helm search repo borancher
+          helm show chart borancher/myrancher
         
