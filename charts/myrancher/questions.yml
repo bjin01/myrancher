@@ -17,35 +17,24 @@ questions:
   default: "boapi.bocap.cloud"
   required: true
   description: "Enter the rancher ingress hostname."
-  type: enum
-  options:
-    - “host”
+  type: string
   label: Rancher ingress - FQDN
   group: "Rancher ingress"
 - variable: ingress.hosts.paths
   default: "/"
   required: true
   description: "Enter the rancher ingress path."
-  type: enum
-  options:
-    - “”
   label: Rancher ingress - FQDN
   group: "Rancher ingress"
 - variable: ingress.tls.hosts
   default: "api1.bocap.cloud"
   required: true
   description: "Enter the rancher ingress https hostname."
-  type: enum
-  options:
-    - “”
   label: Rancher ingress https - FQDN
   group: "Rancher ingress"
 - variable: ingress.tls
   default: "secret"
   required: true
   description: "Enter the tls secret name."
-  type: enum
-  options:
-    - “secretName”
   label: Rancher ingress https - secret
   group: "Rancher ingress"
