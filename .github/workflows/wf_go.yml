@@ -64,21 +64,4 @@ jobs:
       env:
         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-    - name: Sleep for 10s
-      if: ${{ success() }}
-      uses: juliangruber/sleep-action@v1
-      with:
-        time: 120s 
-
-    - name: deploy borancher to cluster
-      uses: wahyd4/kubectl-helm-action@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-      with:
-        args: |
-          helm repo add borancher https://mygit.bocap.cloud/myrancher
-          helm repo update
-          helm upgrade --install --wait boapi borancher/myrancher
-          helm search repo borancher
-          helm show chart borancher/myrancher
         
