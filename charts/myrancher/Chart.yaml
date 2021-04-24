@@ -12,6 +12,6 @@ maintainers: # (optional)
     url: https://github.com/bjin01/myrancher
 type: application
 
-version: 0.1.43
+version: 0.1.44
 
 appVersion: 3.0.4
