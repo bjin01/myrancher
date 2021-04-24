@@ -14,7 +14,7 @@ questions:
   label: Rancher Endpoint - FQDN
   group: "Rancher Credentials"
 - variable: ingress.hosts[0].host
-  default: "api1.bocap.cloud"
+  default: "boapi.bocap.cloud"
   required: true
   description: "Enter the rancher ingress hostname."
   type: string
