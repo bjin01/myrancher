@@ -63,7 +63,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	</style>
 	</head>`
 
-	finaloutput = myhead + "<body><div class=\"a\"><h1>Rancher Cluster Information!</h1><h2 style=color:white;>ALPS review app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3></div><div class=\"row\">"
+	finaloutput = myhead + "<body><div class=\"a\"><h1>Rancher Cluster Information!</h1><h2 style=color:white;>API app</h2><h3>" + dt.Format("02 Jan 2006 15:04:05") + "</h3></div><div class=\"row\">"
 
 	if len(mycluster.Data) != 0 {
 		for _, b := range mycluster.Data {
@@ -71,15 +71,17 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 			p2 := "<p>ClusterID: " + b.Cid + "</p>"
 			p3 := "<p>Provider: " + b.Cprovider + "</p>"
 			p4 := "<p>Number of nodes: " + strconv.Itoa(b.Cnodes) + "</p>"
+			p41 := "<p>Capacity: " + "CPU:" + b.Ccapacity["cpu"] + ", Memory: " + b.Ccapacity["memory"] + ", Pods: " + b.Ccapacity["pods"] + "</p>"
+			p42 := "<p>K8s Version: " + b.Cversion["gitVersion"] + "</p>"
 			p5 := "<p>Status: " + b.Cstate + "</p>"
-			if strings.Contains(b.Cstate, "error") {
+			if strings.Contains(b.Cstate, "error") || strings.Contains(b.Cstate, "unavailable") {
 				p5 = "<p style=color:red;>Status: " + "<b>" + b.Cstate + "&#128078;</b></p>"
 			}
 			if strings.Contains(b.Cstate, "active") {
 				p5 = "<p style=color:white;>Status: " + "<b>" + b.Cstate + "&#128077;</b></p>"
 			}
 			//p6 := "<p>--------------------</p></div>"
-			finaloutput += p1 + p2 + p3 + p4 + p5 + "</div>"
+			finaloutput += p1 + p2 + p3 + p4 + p41 + p42 + p5 + "</div>"
 		}
 	}
 	finaloutput = finaloutput + "</div></body>"

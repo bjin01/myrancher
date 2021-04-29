@@ -13,28 +13,3 @@ questions:
   type: string
   label: Rancher Endpoint - FQDN
   group: "Rancher Credentials"
-- variable: ingress.hosts.host
-  default: "boapi.bocap.cloud"
-  required: true
-  description: "Enter the rancher ingress hostname."
-  type: string
-  label: Rancher ingress - FQDN
-  group: "Rancher ingress"
-- variable: ingress.hosts.paths
-  default: "/"
-  required: true
-  description: "Enter the rancher ingress path."
-  label: Rancher ingress - FQDN
-  group: "Rancher ingress"
-- variable: ingress.tls.hosts
-  default: "api1.bocap.cloud"
-  required: true
-  description: "Enter the rancher ingress https hostname."
-  label: Rancher ingress https - FQDN
-  group: "Rancher ingress"
-- variable: ingress.tls.secret
-  default: "secret"
-  required: true
-  description: "Enter the tls secret name."
-  label: Rancher ingress https - secret
-  group: "Rancher ingress"
