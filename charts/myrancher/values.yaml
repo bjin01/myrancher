@@ -52,8 +52,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: boapi.bocap.cloud
-      paths: 
-        - '/'
+      paths:
+        - "/"
   tls: 
     - secretName: secret
       hosts:
