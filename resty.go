@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/tls"
 	"encoding/json"
 	"fmt"
 
@@ -27,8 +26,8 @@ type Clusterdata struct {
 
 //test
 func (c *Login) getresty() Clusterdata {
-	client := resty.New().SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
-	//client := resty.New()
+	//client := resty.New().SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	client := resty.New()
 	var myclusterdata Clusterdata
 	resp, err := client.R().
 		SetAuthToken(c.token).
