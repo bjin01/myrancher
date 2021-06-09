@@ -54,6 +54,7 @@ ingress:
     - host: boapi.bocap.cloud
       paths:
         - "/"
+  pathType: ImplementationSpecific
   tls: 
     - secretName: secret
       hosts:
