@@ -3,6 +3,23 @@ entries:
   myrancher:
   - apiVersion: v2
     appVersion: 3.0.4
+    created: "2021-06-11T09:51:10.730102378Z"
+    description: A simple rancher rest api query app
+    digest: 7463b7a61bd2db430c52a219d150eb10196fae521c55f23911116d284add0be9
+    icon: https://brand.suse.com/assets/img/brand/logo-horizontal-02.png
+    maintainers:
+    - email: bo.jin@suse.com
+      name: Bo Jin
+      url: https://github.com/bjin01/myrancher
+    name: myrancher
+    sources:
+    - https://github.com/bjin01/myrancher
+    type: application
+    urls:
+    - https://github.com/bjin01/myrancher/releases/download/myrancher-0.1.61/myrancher-0.1.61.tgz
+    version: 0.1.61
+  - apiVersion: v2
+    appVersion: 3.0.4
     created: "2021-06-11T09:48:15.312221969Z"
     description: A simple rancher rest api query app
     digest: 0f461948d613d299eee2ee06b386bf687dae48b795e22712ae5214a3ab13b993
@@ -885,4 +902,4 @@ entries:
     urls:
     - https://github.com/bjin01/myrancher/releases/download/myrancher-0.1.7/myrancher-0.1.7.tgz
     version: 0.1.7
-generated: "2021-06-11T09:48:15.312967875Z"
+generated: "2021-06-11T09:51:10.730555303Z"
