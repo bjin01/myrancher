@@ -71,8 +71,9 @@ jobs:
         DEPLOY_URL: github.com/bjin01/fleet-samples
       run: |
         git clone https://github.com/bjin01/fleet-samples
+        newversion=`grep -E "version:" charts/myrancher/Chart.yaml | awk '{ print $2 }'`
         cd fleet-samples/boapi
-        echo "${{ github.event.release.tag_name }}" > version.txt
+        echo "$newversion" > version.txt
         git config --local user.name "${{ env.GIT_USERNAME }}"
         git config --local user.email "${{ env.GIT_EMAIL }}"
         git add version.txt
