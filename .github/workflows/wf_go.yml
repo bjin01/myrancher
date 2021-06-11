@@ -64,17 +64,17 @@ jobs:
       env:
         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-    - name: clone fleet repo
-      uses: actions/checkout@v2
-      with:
-        repository: bjin01/fleet-samples
-        path: boapi
-      
-    - name: push modified files
+    - name: Checkout remote repo and push the modified fleet.yaml
+      env:
+        GIT_USERNAME: bjin01
+        GIT_EMAIL: "${{ secrets.MYEMAIL }}"
+        DEPLOY_URL: github.com/bjin01/fleet-samples
       run: |
-        date > generated.txt
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add .
-        git commit -m "bo generated"
-        git push
+        git clone https://github.com/bjin01/fleet-samples
+        cd fleet-samples/boapi
+        echo "${{ github.event.release.tag_name }}" > version.txt
+        git config --local user.name "${{ env.GIT_USERNAME }}"
+        git config --local user.email "${{ env.GIT_EMAIL }}"
+        git add version.txt
+        git commit -m "Github Actions Automatically Built in `date +"%Y-%m-%d %H:%M"`"
+        git push --force --quiet "https://${{ env.GIT_USERNAME }}:${{ secrets.MYTOKEN }}@${{ env.DEPLOY_URL }}" main:main
