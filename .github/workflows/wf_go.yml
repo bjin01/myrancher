@@ -77,6 +77,6 @@ jobs:
         echo "  version: $newversion" >> fleet.yaml
         git config --local user.name "${{ env.GIT_USERNAME }}"
         git config --local user.email "${{ env.GIT_EMAIL }}"
-        git add version.txt
+        git add fleet.yaml
         git commit -m "Github Actions Automatically Built in `date +"%Y-%m-%d %H:%M"`"
         git push --force --quiet "https://${{ env.GIT_USERNAME }}:${{ secrets.MYTOKEN }}@${{ env.DEPLOY_URL }}" main:main
