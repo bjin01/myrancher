@@ -67,7 +67,7 @@ jobs:
     - name: Sleep for 30 seconds
       uses: jakejarvis/wait-action@master
       with:
-        time: '30s'
+        time: '15s'
 
     - name: Checkout remote repo and push the modified fleet.yaml
       env:
@@ -84,3 +84,12 @@ jobs:
         git add fleet.yaml
         git commit -m "Github Actions Automatically Built (fleet.yaml) `date +"%Y-%m-%d %H:%M"`"
         git push --force --quiet "https://${{ env.GIT_USERNAME }}:${{ secrets.MYTOKEN }}@${{ env.DEPLOY_URL }}" main:main
+
+    - name: delete old releases
+      uses: dev-drprasad/delete-older-releases@v0.2.0
+      with:
+        repo: <owner>/<repoName> # defaults to current repo
+        keep_latest: 3
+        delete_tag_pattern: "" # defaults to ""
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
