@@ -64,6 +64,11 @@ jobs:
       env:
         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '30s'
+
     - name: Checkout remote repo and push the modified fleet.yaml
       env:
         GIT_USERNAME: bjin01
@@ -73,10 +78,9 @@ jobs:
         git clone https://github.com/bjin01/fleet-samples
         newversion=`grep -E "version:" charts/myrancher/Chart.yaml | awk '{ print $2 }'`
         cd fleet-samples/boapi
-        sed -i 's/version.*//' fleet.yaml
-        echo "  version: $newversion" >> fleet.yaml
+        sed -i "s/version.*/version: $newversion/" fleet.yaml
         git config --local user.name "${{ env.GIT_USERNAME }}"
         git config --local user.email "${{ env.GIT_EMAIL }}"
         git add fleet.yaml
-        git commit -m "Github Actions Automatically Built in `date +"%Y-%m-%d %H:%M"`"
+        git commit -m "Github Actions Automatically Built (fleet.yaml) `date +"%Y-%m-%d %H:%M"`"
         git push --force --quiet "https://${{ env.GIT_USERNAME }}:${{ secrets.MYTOKEN }}@${{ env.DEPLOY_URL }}" main:main
