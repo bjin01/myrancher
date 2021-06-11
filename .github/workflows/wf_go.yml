@@ -64,11 +64,13 @@ jobs:
       env:
         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-    - name: Modify fleet repo yaml
+    - name: clone fleet repo
       uses: actions/checkout@v2
       with:
         repository: bjin01/fleet-samples
         path: boapi
+      
+    - name: push modified files
       run: |
         date > generated.txt
         git config user.name github-actions
