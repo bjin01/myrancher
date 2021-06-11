@@ -64,4 +64,15 @@ jobs:
       env:
         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-        
+    - name: Modify fleet repo yaml
+      uses: actions/checkout@v2
+      with:
+        repository: bjin01/fleet-samples
+        path: boapi
+      run: |
+        date > generated.txt
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        git commit -m "bo generated"
+        git push
