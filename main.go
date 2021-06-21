@@ -41,7 +41,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	myhead := `<head>
 	<style>
 	* {
-		background-color: white;
+		background-color: blue;
 	}
 	
 	div.a {
