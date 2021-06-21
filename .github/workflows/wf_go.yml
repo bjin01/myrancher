@@ -75,7 +75,7 @@ jobs:
         GIT_EMAIL: "${{ secrets.MYEMAIL }}"
         DEPLOY_URL: github.com/bjin01/fleet-samples
       run: |
-        git clone https://github.com/bjin01/fleet-samples
+        git clone https://${{ env.GIT_USERNAME }}:${{ secrets.MYTOKEN }}@github.com/bjin01/fleet-samples
         newversion=`grep -E "version:" charts/myrancher/Chart.yaml | awk '{ print $2 }'`
         cd fleet-samples/boapi
         sed -i "s/version.*/version: $newversion/" fleet.yaml
