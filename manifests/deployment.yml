@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "bjinazure01-69b7"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "bjinazure01-69b7"
+  template:
+    metadata:
+      labels:
+        app: "bjinazure01-69b7"
+    spec:
+      containers:
+        - name: "bjinazure01-69b7"
+          image: "boregistryazure.azurecr.io/bjinazure01"
+          ports:
+          - containerPort: 3000
